@@ -1,0 +1,14 @@
+# battleset.yml
+mybatis-plus:
+#  mapper-locations: classpath*:mapper/*.xml
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.ruoyi.battle.serialport.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 配置字段命名策略为 snake_case
+    fieldNamingStrategy: snake_case
+  global-config:
+    db-config:
+      id-type: auto  # 主键类型，auto 表示自增
+  type-enums-package: com.ruoyi.battle.enums  # 枚举包扫描路径
+

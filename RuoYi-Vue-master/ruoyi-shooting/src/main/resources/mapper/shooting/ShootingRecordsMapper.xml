@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.shooting.mapper.ShootingRecordsMapper">
+    
+    <resultMap type="ShootingRecords" id="ShootingRecordsResult">
+        <result property="id"    column="id"    />
+        <result property="uId"    column="u_id"    />
+        <result property="uName"    column="u_name"    />
+        <result property="bulletNumber"    column="bullet_number"    />
+        <result property="roundName"    column="round_name"    />
+        <result property="ring"    column="ring"    />
+        <result property="direction"    column="direction"    />
+        <result property="shootingTime"    column="shooting_time"    />
+    </resultMap>
+
+    <sql id="selectShootingRecordsVo">
+        select id, u_id, u_name, bullet_number, round_name, ring, direction, shooting_time from shooting_records
+    </sql>
+
+    <select id="selectShootingRecordsList" parameterType="ShootingRecords" resultMap="ShootingRecordsResult">
+        <include refid="selectShootingRecordsVo"/>
+        <where>  
+            <if test="uId != null "> and u_id = #{uId}</if>
+            <if test="uName != null  and uName != ''"> and u_name like concat('%', #{uName}, '%')</if>
+            <if test="bulletNumber != null "> and bullet_number = #{bulletNumber}</if>
+            <if test="roundName != null  and roundName != ''"> and round_name like concat('%', #{roundName}, '%')</if>
+            <if test="ring != null  and ring != ''"> and ring = #{ring}</if>
+            <if test="direction != null  and direction != ''"> and direction = #{direction}</if>
+            <if test="shootingTime != null "> and shooting_time = #{shootingTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectShootingRecordsById" parameterType="Long" resultMap="ShootingRecordsResult">
+        <include refid="selectShootingRecordsVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectShootingRecordsByUsername" parameterType="String" resultMap="ShootingRecordsResult">
+        <include refid="selectShootingRecordsVo"/>
+        where u_name = #{username}
+    </select>
+
+    <select id="selectShootingRecordsListByUsername" parameterType="String" resultMap="ShootingRecordsResult">
+        <include refid="selectShootingRecordsVo"/>
+        where u_name = #{username}
+    </select>
+
+    <insert id="insertShootingRecords" parameterType="ShootingRecords" useGeneratedKeys="true" keyProperty="id">
+        insert into shooting_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uId != null">u_id,</if>
+            <if test="uName != null">u_name,</if>
+            <if test="bulletNumber != null">bullet_number,</if>
+            <if test="roundName != null">round_name,</if>
+            <if test="ring != null">ring,</if>
+            <if test="direction != null">direction,</if>
+            <if test="shootingTime != null">shooting_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uId != null">#{uId},</if>
+            <if test="uName != null">#{uName},</if>
+            <if test="bulletNumber != null">#{bulletNumber},</if>
+            <if test="roundName != null">#{roundName},</if>
+            <if test="ring != null">#{ring},</if>
+            <if test="direction != null">#{direction},</if>
+            <if test="shootingTime != null">#{shootingTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateShootingRecords" parameterType="ShootingRecords">
+        update shooting_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uId != null">u_id = #{uId},</if>
+            <if test="uName != null">u_name = #{uName},</if>
+            <if test="bulletNumber != null">bullet_number = #{bulletNumber},</if>
+            <if test="roundName != null">round_name = #{roundName},</if>
+            <if test="ring != null">ring = #{ring},</if>
+            <if test="direction != null">direction = #{direction},</if>
+            <if test="shootingTime != null">shooting_time = #{shootingTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteShootingRecordsById" parameterType="Long">
+        delete from shooting_records where id = #{id}
+    </delete>
+
+    <delete id="deleteShootingRecordsByIds" parameterType="String">
+        delete from shooting_records where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

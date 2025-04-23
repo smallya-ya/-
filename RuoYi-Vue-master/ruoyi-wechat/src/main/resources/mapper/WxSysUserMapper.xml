@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruoyi.wechat.mapper.WxSysUserMapper">
+    <select id="selectWxSysUserByOpenid" parameterType="String" resultType="com.ruoyi.wechat.domain.WxSysUser">
+        SELECT * FROM sys_user WHERE openid = #{openid}
+    </select>
+</mapper>

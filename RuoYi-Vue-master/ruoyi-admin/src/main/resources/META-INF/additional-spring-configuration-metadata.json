@@ -1,0 +1,103 @@
+{
+  "properties": [
+    {
+      "name": "mqtt.protocol",
+      "type": "java.lang.String",
+      "description": "MQTT所使用的协议.",
+      "defaultValue": "tcp"
+    },
+    {
+      "name": "mqtt.end-point",
+      "type": "java.lang.String",
+      "description": "MQTT所使用的终端(IP或域名)."
+    },
+    {
+      "name": "mqtt.port",
+      "type": ["java.lang.Integer", "java.lang.String"],
+      "description": "MQTT所使用的端口.",
+      "defaultValue": 1883
+    },
+    {
+      "name": "mqtt.host",
+      "type": "java.lang.String",
+      "description": "MQTT所使用的地址完整路径."
+    },
+    {
+      "name": "mqtt.client-id",
+      "type": "java.lang.String",
+      "description": "MQTT的唯一标识符，不同client需要使用不同的标识符，否则后一个会顶掉前一个."
+    },
+    {
+      "name": "mqtt.parent-topic",
+      "type": "java.lang.String",
+      "description": "项目所使用的父级主题."
+    },
+    {
+      "name": "mqtt.producer-topic",
+      "type": "java.lang.String",
+      "description": "项目所使用的推送的主题."
+    },
+    {
+      "name": "mqtt.consumer-topic",
+      "type": "java.lang.String",
+      "description": "项目所使用的消费的主题."
+    },
+    {
+      "name": "mqtt.qos-level",
+      "type": "java.lang.Integer",
+      "description": "MQTT所使用的qos级别.",
+      "defaultValue": 0
+    },
+    {
+      "name": "mqtt.username",
+      "type": "java.lang.String",
+      "description": "MQTT所使用的用户名."
+    },
+    {
+      "name": "mqtt.password",
+      "type": "java.lang.String",
+      "description": "MQTT所使用的密码."
+    },
+    {
+      "name": "mqtt.timeout",
+      "type": "java.lang.Integer",
+      "description": "MQTT所使用的超时时间."
+    },
+    {
+      "name": "mqtt.keepalive",
+      "type": "java.lang.Integer",
+      "description": "MQTT所使用的连接保持时间."
+    },
+    {
+      "name": "mqtt.clean-session",
+      "type": "java.lang.Boolean",
+      "description": "MQTT所使用的cleanSession属性.",
+      "defaultValue": false
+    },
+    {
+      "name": "mqtt.ssl-use",
+      "type": "java.lang.Boolean",
+      "description": "是否使用ssl.",
+      "defaultValue": false
+    },
+    {
+      "name": "mqtt.ssl-ca",
+      "type": "java.lang.String",
+      "description": "ssl根证书地址."
+    },
+    {
+      "name": "mqtt.ssl-client-key",
+      "type": "java.lang.String",
+      "description": "ssl客户端秘钥地址."
+    },
+    {
+      "name": "mqtt.ssl-client-ca",
+      "type": "java.lang.String",
+      "description": "ssl客户端证书地址."
+    },
+    {
+      "name": "mqtt.ssl-password",
+      "type": "java.lang.String",
+      "description": "ssl密码."
+    }
+  ] }

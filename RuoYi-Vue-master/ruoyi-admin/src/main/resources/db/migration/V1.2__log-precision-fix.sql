@@ -1,0 +1,1 @@
+alter table t_battle_log modify column `time` datetime(6);
